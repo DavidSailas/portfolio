@@ -16,7 +16,7 @@ export default function TechStack() {
     <section id="stack" className="py-24 md:py-32 border-t border-line">
       <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
         <div>
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">02 — Stack</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">04 — Stack</span>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-off mt-3">
             Tools &amp; technologies
           </h2>

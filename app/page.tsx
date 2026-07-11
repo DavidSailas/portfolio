@@ -1,13 +1,15 @@
 import Navbar from './components/Navbar';
 import ProjectGrid from './components/ProjectGrid';
 import TechStack from './components/TechStack';
+import Experience from './components/Experience';
+import Education from './components/Education';
 import { ArrowDown } from 'lucide-react';
 
 const socials = [
-  { label: 'GitHub', href: '#' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'GitHub', href: 'https://github.com/DavidSailas' },
+  { label: 'Instagram', href: 'https://www.instagram.com/code_dasai/' },
+  { label: 'Facebook', href: 'https://www.facebook.com/dasai2123' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/david-villondo' },
 ];
 
 export default function Home() {
@@ -45,7 +47,9 @@ export default function Home() {
 
             <div className="mt-10 flex items-center gap-4">
               <a
-                href="#"
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 rounded-full border border-line text-off text-xs uppercase tracking-widest hover:border-accent/60 hover:bg-white/5 transition-colors"
               >
                 Resume
@@ -64,7 +68,7 @@ export default function Home() {
         <div className="absolute left-6 md:left-8 bottom-8 z-10 flex items-center gap-5 font-mono text-[11px] uppercase tracking-widest text-muted">
           {socials.map(({ label, href }, i) => (
             <span key={label} className="flex items-center gap-5">
-              <a href={href} className="hover:text-accent-2 transition-colors">
+              <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-2 transition-colors">
                 {label}
               </a>
               {i < socials.length - 1 && <span className="text-line">/</span>}
@@ -92,10 +96,10 @@ export default function Home() {
                 About Me
               </h2>
               <a
-                href="mailto:hello@youremail.com"
+                href="mailto:davidvillondo@gmail.com"
                 className="inline-block font-mono text-sm text-accent-2 hover:text-accent transition-colors mb-8"
               >
-                hello@youremail.com
+                davidvillondo@gmail.com
               </a>
               <p className="text-lg md:text-xl leading-relaxed text-muted">
                 I&apos;m a fresh graduate based in Minglanilla, Cebu. I translate complex logic into
@@ -112,25 +116,45 @@ export default function Home() {
           </div>
 
           {/* Right: portrait, clean split like reference */}
-          <div className="relative min-h-[420px] md:min-h-full bg-panel">
+          <div className="relative min-h-[420px] md:min-h-full bg-ink overflow-hidden">
+            {/* soft glow behind the figure so the cutout feels intentional, not pasted */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(60% 55% at 50% 45%, rgba(79,157,255,0.10), transparent 70%)',
+              }}
+            />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/bg1.png"
               alt="David Villondo"
-              className="absolute inset-0 w-full h-full object-contain object-bottom"
+              className="absolute inset-0 w-full h-full object-cover object-top scale-[1.15]"
+              style={{
+                maskImage:
+                  'linear-gradient(to bottom, black 55%, transparent 92%), linear-gradient(to left, black 70%, transparent 100%)',
+                maskComposite: 'intersect',
+                WebkitMaskImage:
+                  'linear-gradient(to bottom, black 55%, transparent 92%), linear-gradient(to left, black 70%, transparent 100%)',
+                WebkitMaskComposite: 'source-in',
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+            {/* fade the top/sides into the ink background so the image edge disappears */}
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-transparent via-55% to-ink" />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent md:from-ink/40" />
           </div>
         </div>
       </section>
 
-      {/* ---------------- Stack + Projects ---------------- */}
+      {/* ---------------- Experience + Education + Stack + Projects ---------------- */}
       <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <Experience />
+        <Education />
         <TechStack />
 
         <section id="projects" className="py-24 md:py-32 border-t border-line">
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            03 — Projects
+            05 — Projects
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-off mt-3 mb-12">
             Selected work
@@ -143,21 +167,21 @@ export default function Home() {
       <footer id="contact" className="border-t border-line">
         <div className="max-w-6xl mx-auto px-6 md:px-8 py-24 md:py-32 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            04 — Contact
+            06 — Contact
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-off mt-4 mb-8">
             Let&apos;s build something.
           </h2>
           <a
-            href="mailto:hello@youremail.com"
+            href="mailto:davidvillondo@gmail.com"
             className="inline-block font-display text-xl md:text-2xl text-off border-b border-accent/50 hover:text-accent-2 hover:border-accent-2 transition-colors"
           >
-            hello@youremail.com
+            davidvillondo@gmail.com
           </a>
 
           <div className="mt-14 flex items-center justify-center gap-8 font-mono text-xs uppercase tracking-widest text-muted">
             {socials.map(({ label, href }) => (
-              <a key={label} href={href} className="hover:text-accent-2 transition-colors">
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-2 transition-colors">
                 {label}
               </a>
             ))}
