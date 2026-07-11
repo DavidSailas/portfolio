@@ -3,6 +3,7 @@ import ProjectGrid from './components/ProjectGrid';
 import TechStack from './components/TechStack';
 import Experience from './components/Experience';
 import Education from './components/Education';
+import Certificates from './components/Certificates';
 import { ArrowDown } from 'lucide-react';
 
 const socials = [
@@ -41,8 +42,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base md:text-lg text-muted mt-6 max-w-md leading-relaxed">
-              Fresh graduate turning complex logic into clean, maintainable, high&#8209;performance
-              software.
+              Fresh graduate turning ideas into clean, efficient, and reliable software.
             </p>
 
             <div className="mt-10 flex items-center gap-4">
@@ -102,9 +102,10 @@ export default function Home() {
                 davidvillondo@gmail.com
               </a>
               <p className="text-lg md:text-xl leading-relaxed text-muted">
-                I&apos;m a fresh graduate based in Minglanilla, Cebu. I translate complex logic into
-                clean, maintainable, and high&#8209;performance digital solutions — and I&apos;m
-                looking for a team to grow that craft with.
+                Hi, I’m David. I am a software developer based in Minglanilla, Cebu.
+                I enjoy taking complex problems and breaking them down into simple, working code.
+                As a fresh graduate, I am eager to apply my technical skills to real-world projects
+                and help teams build better digital experiences.
               </p>
 
               <div className="mt-12 pl-4 border-l-2 border-accent font-mono text-xs uppercase tracking-widest text-muted">
@@ -146,15 +147,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- Experience + Education + Stack + Projects ---------------- */}
+      {/* ---------------- Experience + Education + Certificates + Stack + Projects ---------------- */}
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <Experience />
         <Education />
+        <Certificates />
         <TechStack />
 
         <section id="projects" className="py-24 md:py-32 border-t border-line">
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            05 — Projects
+            06 — Projects
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-off mt-3 mb-12">
             Selected work
@@ -164,31 +166,51 @@ export default function Home() {
       </div>
 
       {/* ---------------- Contact / Footer ---------------- */}
-      <footer id="contact" className="border-t border-line">
-        <div className="max-w-6xl mx-auto px-6 md:px-8 py-24 md:py-32 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            06 — Contact
+      <footer id="contact" className="border-t border-white/10 mt-32">
+        <div className="max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
+
+          {/* Label */}
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-blue-500">
+            07 — Let&apos;s Connect
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold text-off mt-4 mb-8">
-            Let&apos;s build something.
+
+          {/* Main Pitch */}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-6 mb-8 tracking-tight">
+            Open to new opportunities and creative collaborations.
           </h2>
+
+          {/* Bio - Constrained width for readability */}
+          <p className="text-lg text-slate-400 leading-relaxed mb-12 max-w-xl mx-auto">
+            I’m currently looking for a team where I can contribute to meaningful projects,
+            write clean code, and continue growing as a developer.
+          </p>
+
+          {/* Call to Action */}
           <a
             href="mailto:davidvillondo@gmail.com"
-            className="inline-block font-display text-xl md:text-2xl text-off border-b border-accent/50 hover:text-accent-2 hover:border-accent-2 transition-colors"
+            className="inline-block text-2xl font-medium text-white hover:text-blue-400 transition-all border-b-2 border-white/20 hover:border-blue-400/50 pb-1"
           >
             davidvillondo@gmail.com
           </a>
 
-          <div className="mt-14 flex items-center justify-center gap-8 font-mono text-xs uppercase tracking-widest text-muted">
+          {/* Socials */}
+          <div className="mt-20 flex flex-wrap justify-center gap-6 md:gap-10">
             {socials.map(({ label, href }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-2 transition-colors">
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors"
+              >
                 {label}
               </a>
             ))}
           </div>
 
-          <p className="mt-16 font-mono text-[11px] text-faint tracking-widest">
-            © {new Date().getFullYear()} DAVID VILLONDO — BUILT WITH NEXT.JS
+          {/* Copyright */}
+          <p className="mt-20 font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+            © {new Date().getFullYear()} David Villondo. Built with Next.js.
           </p>
         </div>
       </footer>

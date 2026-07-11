@@ -7,6 +7,7 @@ const links = [
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
+  { href: '#certificates', label: 'Certificates' },
   { href: '#stack', label: 'Stack' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
@@ -42,41 +43,42 @@ export default function Navbar() {
         scrolled ? 'bg-ink/85 backdrop-blur-md border-b border-line py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-[auto_1fr_auto] items-center gap-6">
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="font-display text-lg font-semibold tracking-tight text-off"
+          className="font-display text-lg font-semibold tracking-tight text-off whitespace-nowrap"
         >
           David<span className="text-accent">.</span>Villondo
         </a>
 
-        <div className="hidden lg:flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-          {links.map((l, i) => (
-            <a key={l.href} href={l.href} className="group flex items-center gap-1.5 hover:text-off transition-colors">
-              <span className="text-accent/60 group-hover:text-accent transition-colors">0{i + 1}</span>
+        <div className="hidden lg:flex items-center justify-center gap-x-7 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="hover:text-off transition-colors whitespace-nowrap">
               {l.label}
             </a>
           ))}
         </div>
 
-        <a
-          href="tel:+639938507294"
-          className="hidden lg:inline-flex items-center gap-2 font-mono text-[11px] tracking-widest text-muted hover:text-off transition-colors"
-        >
-          <Phone size={13} strokeWidth={1.75} />
-          +63 993 850 7294
-        </a>
+        <div className="flex items-center justify-end">
+          <a
+            href="tel:+639938507294"
+            className="hidden lg:inline-flex items-center gap-2 font-mono text-[11px] tracking-widest text-muted hover:text-off transition-colors whitespace-nowrap"
+          >
+            <Phone size={13} strokeWidth={1.75} />
+            +63 993 850 7294
+          </a>
 
-        <a
-          href="#contact"
-          className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-off border border-line rounded-full px-4 py-2"
-        >
-          Menu
-        </a>
+          <a
+            href="#contact"
+            className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-off border border-line rounded-full px-4 py-2"
+          >
+            Menu
+          </a>
+        </div>
       </div>
     </nav>
   );
