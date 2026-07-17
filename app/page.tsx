@@ -64,22 +64,23 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom-left social row, matching reference */}
-        <div className="absolute left-6 md:left-8 bottom-8 z-10 flex items-center gap-5 font-mono text-[11px] uppercase tracking-widest text-muted">
-          {socials.map(({ label, href }, i) => (
-            <span key={label} className="flex items-center gap-5">
-              <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-2 transition-colors">
-                {label}
-              </a>
-              {i < socials.length - 1 && <span className="text-line">/</span>}
-            </span>
-          ))}
-        </div>
+        {/* Bottom row: socials + scroll cue. Stacked on mobile, split corners on desktop */}
+        <div className="absolute inset-x-0 bottom-6 md:bottom-8 z-10 px-6 md:px-8 flex flex-col-reverse items-center gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:gap-5 font-mono text-[11px] uppercase tracking-widest text-muted">
+            {socials.map(({ label, href }, i) => (
+              <span key={label} className="flex items-center gap-x-4 md:gap-5">
+                <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-2 transition-colors">
+                  {label}
+                </a>
+                {i < socials.length - 1 && <span className="text-line hidden sm:inline">/</span>}
+              </span>
+            ))}
+          </div>
 
-        {/* Scroll cue */}
-        <div className="absolute right-6 md:right-8 bottom-8 z-10 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-faint">
-          Scroll
-          <ArrowDown size={14} className="animate-bounce" />
+          <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-faint">
+            Scroll
+            <ArrowDown size={14} className="animate-bounce" />
+          </div>
         </div>
       </section>
 
@@ -130,15 +131,7 @@ export default function Home() {
             <img
               src="/bg1.png"
               alt="David Villondo"
-              className="absolute inset-0 w-full h-full object-cover object-top scale-[1.15]"
-              style={{
-                maskImage:
-                  'linear-gradient(to bottom, black 55%, transparent 92%), linear-gradient(to left, black 70%, transparent 100%)',
-                maskComposite: 'intersect',
-                WebkitMaskImage:
-                  'linear-gradient(to bottom, black 55%, transparent 92%), linear-gradient(to left, black 70%, transparent 100%)',
-                WebkitMaskComposite: 'source-in',
-              }}
+              className="absolute inset-0 w-full h-full object-contain object-bottom scale-100"
             />
             {/* fade the top/sides into the ink background so the image edge disappears */}
             <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-transparent via-55% to-ink" />
@@ -155,13 +148,24 @@ export default function Home() {
         <TechStack />
 
         <section id="projects" className="py-24 md:py-32 border-t border-line">
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            06 — Projects
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-off mt-3 mb-12">
-            Selected work
-          </h2>
-          <ProjectGrid />
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
+                06 — Projects
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-off mt-3">
+                Selected work
+              </h2>
+            </div>
+            {/* "Show All" Link */}
+            <a 
+              href="/projects" 
+              className="font-mono text-xs uppercase tracking-widest text-muted hover:text-accent transition-colors border-b border-muted/30 hover:border-accent"
+            >
+              Show All →
+            </a>
+          </div>
+          <ProjectGrid limit={6} />
         </section>
       </div>
 

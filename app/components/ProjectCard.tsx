@@ -11,6 +11,8 @@ interface ProjectProps {
   tags: string[];
   image?: string;
   imagePosition?: 'top' | 'center' | 'bottom';
+  codeUrl?: string;
+  liveUrl?: string;
 }
 
 export default function ProjectCard({
@@ -21,9 +23,12 @@ export default function ProjectCard({
   tags,
   image,
   imagePosition = 'top',
+  codeUrl,
+  liveUrl,
 }: ProjectProps) {
   const [imgError, setImgError] = useState(false);
   const showImage = Boolean(image) && !imgError;
+  const hasLinks = Boolean(codeUrl) || Boolean(liveUrl);
 
   const objectPositionClass =
     imagePosition === 'center' ? 'object-center' : imagePosition === 'bottom' ? 'object-bottom' : 'object-top';
@@ -87,14 +92,30 @@ export default function ProjectCard({
           ))}
         </div>
 
-        <div className="flex gap-5 pt-5 border-t border-line font-mono text-xs uppercase tracking-widest">
-          <a href="#" className="flex items-center gap-1.5 text-muted hover:text-off transition-colors">
-            <Code2 size={14} /> Code
-          </a>
-          <a href="#" className="flex items-center gap-1.5 text-muted hover:text-off transition-colors">
-            <ExternalLink size={14} /> Live
-          </a>
-        </div>
+        {hasLinks && (
+          <div className="flex gap-5 pt-5 border-t border-line font-mono text-xs uppercase tracking-widest">
+            {codeUrl && (
+              <a
+                href={codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-muted hover:text-off transition-colors"
+              >
+                <Code2 size={14} /> Code
+              </a>
+            )}
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-muted hover:text-off transition-colors"
+              >
+                <ExternalLink size={14} /> Live
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
